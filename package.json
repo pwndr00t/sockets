@@ -13,6 +13,7 @@
   "author": "Melih Degis",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "socket.io": "^1.3.7"
   }
 }
