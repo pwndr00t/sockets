@@ -3,7 +3,7 @@ var room = getQueryVariable('room');
 console.log(name + " wants to join " + room);
 var socket = io();
 
-var $message = jQuery('.room-title').text(room);
+jQuery('.room-title').text(room);
 
 
 socket.on('connect', function () {
@@ -16,11 +16,14 @@ socket.on('connect', function () {
 
 socket.on('message', function (message) {
     var timestamp = moment.utc(message.timestamp);
-    var $message = jQuery('.messages');
+    var $messages = jQuery('.messages');
+    var $message = jQuery('<li class="list-group-item"></li>')
     console.log('New Message:');
     console.log(message.text);
     $message.append("<p><strong>" + message.name + " " + timestamp.local().format("h:mm a") + " </strong><p>");
     $message.append("<p>" + message.text + "<p>");
+    $messages.append($message);
+
 });
 
 // handles submiting of new message
